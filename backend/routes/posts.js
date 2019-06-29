@@ -91,6 +91,7 @@ router.get("", (req, res, next) => {
   });
 });
 
+
 router.get("/:id", (req, res, next) => {
   Post.findById(req.params.id).then(post => {
     if (post) {
