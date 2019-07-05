@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
 
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from "../auth/auth.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
@@ -21,13 +21,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
-}
+  }
 
-onLogout() {
-  this.authService.logout();
-}
+  onLogout() {
+    this.authService.logout();
+  }
 
-ngOnDestroy() {
-  this.authListenerSubs.unsubscribe();
-}
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
+  }
 }
