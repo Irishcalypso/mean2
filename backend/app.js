@@ -10,7 +10,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://CalypsoIT:c@lyps0IT@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
+    "mongodb+srv://CalypsoIT:c@lyps0IT@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true } //+ process.env.MONGO_ATLAS_PW +
   )
   .then(() => {
     console.log("Connected to database!");
