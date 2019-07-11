@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
@@ -19,7 +19,7 @@ exports.createUser = (req, res, next) => {
       })
       .catch(err => {
         res.status(500).json({
-          message: "Invalid new user authentication credentials!"
+          message: "Invalid authentication credentials!"
         });
       });
   });
@@ -27,7 +27,6 @@ exports.createUser = (req, res, next) => {
 
 exports.userLogin = (req, res, next) => {
   let fetchedUser;
-
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {
@@ -46,7 +45,7 @@ exports.userLogin = (req, res, next) => {
       }
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
-        "secret_this_should_be_longer", // process.env.JWT_KEY,
+        process.env.JWT_KEY,
         { expiresIn: "1h" }
       );
       res.status(200).json({
@@ -57,7 +56,7 @@ exports.userLogin = (req, res, next) => {
     })
     .catch(err => {
       return res.status(401).json({
-        message: "Invalid member authentication credentials!"
+        message: "Invalid authentication credentials!"
       });
     });
 }

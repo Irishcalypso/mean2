@@ -10,7 +10,10 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://CalypsoIT:c@lyps0IT@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true } //+ process.env.MONGO_ATLAS_PW +
+
+    // "mongodb+srv://max:" + process.env.MONGO_ATLAS_PW + "@cluster0-ntrwp.mongodb.net/node-angular"
+    "mongodb+srv://CalypsoIT:c@lyps0IT@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
+    // "mongodb+srv://CalypsoIT:" + process.env.MONGO_ATLAS_PW + "@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
   )
   .then(() => {
     console.log("Connected to database!");
