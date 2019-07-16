@@ -10,10 +10,8 @@ const app = express();
 
 mongoose
   .connect(
-
-    // "mongodb+srv://max:" + process.env.MONGO_ATLAS_PW + "@cluster0-ntrwp.mongodb.net/node-angular"
-     "mongodb+srv://CalypsoIT:c@lyps0IT@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
-    // "mongodb+srv://CalypsoIT:" + process.env.MONGO_ATLAS_PW + "@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
+     "mongodb+srv://IrishCalypso:kayleigh9@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
+    // "mongodb+srv://IrishCalypso:" + process.env.MONGO_ATLAS_PW + "@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
   )
   .then(() => {
     console.log("Connected to database!");
@@ -24,7 +22,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("backend/images")));
+app.use("/images", express.static(path.join("images")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
