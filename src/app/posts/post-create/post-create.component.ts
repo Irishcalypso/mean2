@@ -91,7 +91,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
 /* ln 76 gets event of type Event(default) 77 extract the image file - 'a html element input type' which has a file property which is an array
 This is then stored in a form control, called image (in onInit). Using the required validator ensures its not empty,
 ln 78 form is the form control, patch Value allows you to target a single control, i.e. image of file object.
-ln 79 update value set using patch
+ln 79 update value set using patch ... gets image & passed it to file, file is readAsDataURL
  */
 
   onSavePost() {
