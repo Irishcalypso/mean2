@@ -9,10 +9,6 @@ import { Post } from './post.model';
 
 const BACKEND_URL = environment.apiUrl + '/posts/';
 
-/*  apiUrl: "http://localhost:3000/api" */
-/* const BACKEND_URL = environment.apiUrl + '/posts/';
-used in */
-
 @Injectable({ providedIn: 'root' })
 export class PostsService {
   private posts: Post[] = [];

@@ -10,9 +10,10 @@ const app = express();
 
 mongoose
   .connect(
-     "mongodb+srv://IrishCalypso:kayleigh9@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
-    // "mongodb+srv://IrishCalypso:" + process.env.MONGO_ATLAS_PW + "@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
-  )
+    "mongodb+srv://IrishCalypso:" + 
+      process.env.MONGO_ATLAS_PW + 
+        "@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
+    )
   .then(() => {
     console.log("Connected to database!");
   })
@@ -20,24 +21,29 @@ mongoose
     console.log("Connection failed!");
   });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("images")));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use("/images", express.static(path.join("images")));
+//  app.use("/", express.static(path.join(__dirname, "angular")));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+   res.setHeader("Access-Control-Allow-Origin", "*");
+   res.setHeader(
+     "Access-Control-Allow-Headers",
+     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  res.setHeader(
+   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   next();
-});
+ });
 
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
+// app.use((req, res, next) => {
+//  res.sendFile(path.join(__dirname, "angular", "index.html"));
+// });
 
 module.exports = app;
+
