@@ -6,14 +6,11 @@
       <mat-error *ngIf="form.get('title').invalid">Please enter a post title.</mat-error>
     </mat-form-field>
     <div>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button> <!--connects the button to the image picker-->
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
       <input type="file" #filePicker (change)="onImagePicked($event)">
-      <!---change event=picking or changing an image, method=onImagePicket, $event access the event object, passes as argument. next see typescript code 'onImagePicked'-->
     </div>
-    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"> <!--if imagePreview is not empty & not null-->
-      <img [src]="imagePreview" [alt]="form.value.title"> 
-      <!--to display the image it needs to be converted into a 'data URL' to be displayed. 
-        In pcp add new property imagePreview = string. and populate it in OnImagePicke with the right URL, using file reader-->
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+      <img [src]="imagePreview" [alt]="form.value.title">
     </div>
     <mat-form-field>
       <textarea matInput rows="4" formControlName="content" placeholder="Post Content"></textarea>

@@ -5,7 +5,7 @@ exports.createPost = (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
-    imagePath: url + "backend/images/" + req.file.filename,
+    imagePath: url + "/images/" + req.file.filename,
     creator: req.userData.userId
   });
   post
@@ -30,7 +30,7 @@ exports.updatePost = (req, res, next) => {
   let imagePath = req.body.imagePath;
   if (req.file) {
     const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "backend/images/" + req.file.filename;
+    imagePath = url + "/images/" + req.file.filename;
   }
   const post = new Post({
     _id: req.body.id,
@@ -39,10 +39,8 @@ exports.updatePost = (req, res, next) => {
     imagePath: imagePath,
     creator: req.userData.userId
   });
-  console.log(post);
   Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
     .then(result => {
-      console.log(post);
       if (result.n > 0) {
         res.status(200).json({ message: "Update successful!" });
       } else {
