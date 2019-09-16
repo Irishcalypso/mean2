@@ -1,3 +1,12 @@
+<h3>New Post</h3>
+<!-- {{data3}} -->
+
+<ul class="topnav">
+    <li><a [routerLink]="['/posts']">Chat Room</a></li>
+    <li><a [routerLink]="['/list']">Message List</a></li>
+
+  </ul>
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">

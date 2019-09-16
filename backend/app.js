@@ -10,8 +10,9 @@ const app = express();
 
 mongoose
   .connect(
+    //"mongodb+srv://IrishCalypso:Kayleigh9@cluster1-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
     "mongodb+srv://IrishCalypso:" + process.env.MONGO_ATLAS_PW + "@cluster0-h8eqj.mongodb.net/node-angular", { useNewUrlParser: true }
-    )
+  )
   .then(() => {
     console.log("Connected to database!");
   })
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("images")));
 
+//disable CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(

@@ -1,5 +1,18 @@
-<app-header></app-header>
+
+<!---<app-header></app-header>-->
+
+<ul class="topnav">
+  <li><a class="thicker" [routerLink]="['/home']">HOME</a></li>
+  <li><a class="thicker" [routerLink]="['/aboutus']">HELP</a></li>
+  <li><a class="thicker" [routerLink]="['/posts']">CHAT ROOM</a></li>
+</ul>
+
+<br>
 <main>
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet><!--It acts as a placeholder that marks the spot in the template where the router should display the components for that outlet.-->
 </main>
-<!-- <app-error *ngIf="hasError"></app-error> -->
+<br><br>
+
+<footer><!--<a href="mailto:karen@calypsoit.com"></a>Contact: karen@calypsoit.com</a>-->
+<a href="https://github.com/Irishcalypso">GITHUB</a>
+</footer>

@@ -1,3 +1,15 @@
+<h3>Latest News</h3>
+
+
+<!--<app-header></app-header>  -->
+<ul class="topnav">
+  <!--  <li><a [routerLink]="['/home']">Home</a></li>-->
+  <!-- <li><a [routerLink]="['/aboutus']">Help</a></li>-->
+    <li><a class="thicker"  [routerLink]="['/posts']">CHAT ROOM</a></li>
+    <li><a class="thicker"  [routerLink]="['/create']">NEW POST</a></li>
+
+  </ul>
+
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let post of posts">
@@ -17,3 +29,4 @@
 <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
   *ngIf="posts.length > 0"></mat-paginator>
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
